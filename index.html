@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Process Scheduling Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>⚙️ CPU Process Scheduling Visualizer</h1>
+
+    <p class="subtitle">
+        Visualize CPU scheduling algorithms with Gantt Charts
+    </p>
+
+    <!-- Process Input -->
+
+    <div class="card">
+
+        <h2>➕ Add Process</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Process ID</label>
+                <input
+                    type="text"
+                    id="processId"
+                    placeholder="P1">
+            </div>
+
+            <div>
+                <label>Arrival Time</label>
+                <input
+                    type="number"
+                    id="arrivalTime"
+                    min="0"
+                    placeholder="0">
+            </div>
+
+            <div>
+                <label>Burst Time</label>
+                <input
+                    type="number"
+                    id="burstTime"
+                    min="1"
+                    placeholder="5">
+            </div>
+
+            <div>
+                <label>Priority</label>
+                <input
+                    type="number"
+                    id="priority"
+                    min="1"
+                    placeholder="1">
+            </div>
+
+        </div>
+
+        <button onclick="addProcess()">
+            Add Process
+        </button>
+
+        <button class="sample" onclick="loadSample()">
+            Load Sample
+        </button>
+
+        <button class="clear" onclick="clearAll()">
+            Clear All
+        </button>
+
+    </div>
+
+
+    <!-- Algorithm Selection -->
+
+    <div class="card">
+
+        <h2>🧠 Scheduling Algorithm</h2>
+
+        <select id="algorithm">
+
+            <option value="FCFS">
+                First Come First Serve (FCFS)
+            </option>
+
+            <option value="SJF">
+                Shortest Job First (SJF)
+            </option>
+
+            <option value="PRIORITY">
+                Priority Scheduling
+            </option>
+
+            <option value="RR">
+                Round Robin
+            </option>
+
+        </select>
+
+        <div id="quantumBox">
+
+            <label>Time Quantum</label>
+
+            <input
+                type="number"
+                id="quantum"
+                value="2"
+                min="1">
+
+        </div>
+
+        <br>
+
+        <button
+            class="run"
+            onclick="runScheduling()">
+
+            ▶ Run Scheduling
+
+        </button>
+
+    </div>
+
+
+    <!-- Process Table -->
+
+    <div class="card">
+
+        <h2>📋 Process Table</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Process</th>
+                        <th>Arrival</th>
+                        <th>Burst</th>
+                        <th>Priority</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="processTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- Gantt Chart -->
+
+    <div class="card">
+
+        <h2>📊 Gantt Chart</h2>
+
+        <div id="ganttChart">
+            Run an algorithm to see the Gantt Chart.
+        </div>
+
+    </div>
+
+
+    <!-- Results -->
+
+    <div class="card">
+
+        <h2>📈 Scheduling Results</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Process</th>
+                        <th>Completion Time</th>
+                        <th>Turnaround Time</th>
+                        <th>Waiting Time</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="resultTable"></tbody>
+
+            </table>
+
+        </div>
+
+        <div id="averages"></div>
+
+    </div>
+
+
+    <!-- ADSA -->
+
+    <div class="card concepts">
+
+        <h2>📚 Concepts Used</h2>
+
+        <ul>
+
+            <li>
+                <b>Queue:</b> Used in FCFS and Round Robin.
+            </li>
+
+            <li>
+                <b>Sorting:</b> Used by SJF and Priority Scheduling.
+            </li>
+
+            <li>
+                <b>Greedy Algorithm:</b> SJF selects the shortest available job.
+            </li>
+
+            <li>
+                <b>Priority Queue:</b> Useful for efficient priority scheduling.
+            </li>
+
+            <li>
+                <b>Gantt Chart:</b> Visualizes CPU execution.
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
